@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Tables - Atlantis Lite Bootstrap 4 Admin Dashboard</title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <link rel="icon" href="./assets/img/icon.ico" type="image/x-icon" />
+
+    <!-- Fonts and icons -->
+    <script src="./assets/js/plugin/webfont/webfont.min.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Lato:300,400,700,900"] },
+            custom: { "families": ["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['./assets/css/fonts.min.css'] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/atlantis.min.css">
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link rel="stylesheet" href="./assets/css/demo.css">
+
+    <link rel="stylesheet" href="./assets/datatable/button/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/datatable/button/css/buttons.bootstrap4.css">
+    <link rel="stylesheet" href="./assets/datatable/button/css/dataTables.bootstrap4.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="main-header">
+            <!-- Logo Header -->
+            <div class="logo-header" data-background-color="blue">
+
+                <h2 style="color: aliceblue;">Array CRUD</h2>
+
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon">
+                        <i class="icon-menu"></i>
+                    </span>
+                </button>
+
+                <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                <div class="nav-toggle">
+                    <button class="btn btn-toggle toggle-sidebar">
+                        <i class="icon-menu"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- End Logo Header -->
+
+            <!-- Navbar Header -->
+            <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
+            </nav>
+            <!-- End Navbar -->
+
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar sidebar-style-2">
+
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                <div class="sidebar-content">
+
+                    <ul class="nav nav-primary">
+
+                        <li class="nav-item active submenu">
+                            <a data-toggle="collapse" href="#tables">
+                                <i class="fas fa-table"></i>
+                                <p>Tables</p>
+                                <span class="caret"></span>
+                            </a>
+
+                            <div class="collapse show" id="tables">
+                                <ul class="nav nav-collapse">
+                                    <li class="active">
+                                        <a href="../tables/tables.html">
+                                            <span class="sub-item">Basic Table</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="main-panel">
+            <div class="content">
+                <div class="page-inner">
+                    <div class="page-header">
+                        <h4 class="page-title">Tables</h4>
+                        <ul class="breadcrumbs">
+                            <li class="nav-home">
+                                <a href="#">
+                                    <i class="flaticon-home"></i>
+                                </a>
+                            </li>
+                            <li class="separator">
+                                <i class="flaticon-right-arrow"></i>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">Tables</a>
+                            </li>
+                            <li class="separator">
+                                <i class="flaticon-right-arrow"></i>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#">Basic Tables</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <input type="hidden" id="data_array">
+
+                                <div class="card-header">
+                                    <div class="card-title">Datatable CRUD Array</div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="card-sub">
+                                        Datatable CRUD Array!
+                                    </div>
+
+                                    <table id="table_array"
+                                        class="display table table-striped table-hover dataTable table-bordered"
+                                        role="grid">
+                                        <thead>
+                                            <tr role="row">
+                                                <th style="width: 134.517px;">No</th>
+                                                <th style="width: 134.517px;">Judul</th>
+                                                <th style="width: 134.517px;">Keterangan</th>
+                                                <th style="width: 134.517px;">Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="container-fluid">
+
+
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- modal add edit -->
+    <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" class="form-control" id="id_menu_header">
+
+                    <div class="form-group">
+                        <label for="judul">Judul</label>
+                        <input type="text" class="form-control" id="judul" placeholder="Judul">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="keterangan">Keterangan</label>
+                        <input type="text" class="form-control" id="keterangan" placeholder="Keterangan">
+                    </div>
+
+                </div>
+
+                <div class="modal-footer justify-content-between">
+                    <button data-dismiss="modal" class="btn btn-danger"><i class="fas fa-times"></i> Close</button>
+                    <button id="save_item" class="btn btn-success"><i class="fas fa-memory"></i> Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--   Core JS Files   -->
+    <script src="./assets/js/core/jquery.3.2.1.min.js"></script>
+    <script src="./assets/js/core/popper.min.js"></script>
+    <script src="./assets/js/core/bootstrap.min.js"></script>
+    <!-- jQuery UI -->
+    <script src="./assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="./assets/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="./assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
+    <!-- Atlantis JS -->
+    <script src="./assets/js/atlantis.min.js"></script>
+    <!-- Atlantis DEMO methods, don't include it in your project! -->
+    <script src="./assets/js/setting-demo2.js"></script>
+
+    <script src="./assets/datatable/button/js/bootstrap.min.js"></script>
+    <script src="./assets/datatable/button/js/dataTables.js"></script>
+    <script src="./assets/datatable/button/js/dataTables.bootstrap4.js"></script>
+    <script src="./assets/datatable/button/js/dataTables.buttons.js"></script>
+    <script src="./assets/datatable/button/js/buttons.bootstrap4.js"></script>
+    <script src="./assets/datatable/button/js/jszip.min.js"></script>
+    <script src="./assets/datatable/button/js/pdfmake.min.js"></script>
+    <script src="./assets/datatable/button/js/vfs_fonts.js"></script>
+    <script src="./assets/datatable/button/js/buttons.html5.min.js"></script>
+    <script src="./assets/datatable/button/js/buttons.print.min.js"></script>
+    <script src="./assets/datatable/button/js/buttons.colVis.min.js"></script>
+
+    <script src="./assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
+
+    <!-- Sweet Alert -->
+    <script src="./assets/js/plugin/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        dataArray = [];
+
+        loadTableArray();
+
+        function tampilPesan(state, icon, title, message) {
+            var placementFrom = 'top';
+            var placementAlign = 'right';
+            var state = state;
+            var style = 'withicon';
+            var content = {};
+
+            content.title = title;
+            content.message = message;
+            if (style == "withicon") {
+                content.icon = icon;
+            } else {
+                content.icon = 'none';
+            }
+
+            // content.url = 'index.html';
+            // content.target = '_blank';
+
+            $.notify(content, {
+                type: state,
+                placement: {
+                    from: placementFrom,
+                    align: placementAlign
+                },
+                time: 10,
+                delay: 1,
+            });
+        }
+
+        function clearForm() {
+            $("#judul").val("");
+            $("#keterangan").val("");
+        }
+
+        function addItem() {
+            clearForm();
+            $('#modal-default').modal('show');
+            $('.modal-title').html('Add Item');
+        }
+
+        $(document).on("click", "#save_item", function (e) {
+            var id = dataArray.length + 1;
+            var judul = $("#judul").val();
+            var keterangan = $("#keterangan").val();
+
+            if (judul == "") {
+                tampilPesan('warning', 'fa fa-info', 'Informasi', 'Judul tidak boleh kosong!');
+            } else if (keterangan == "") {
+                tampilPesan('warning', 'fa fa-info', 'Informasi', 'Keterangan tidak boleh kosong!');
+            } else {
+
+                var formData = {
+                    id,
+                    judul,
+                    keterangan
+                };
+
+                // add to array
+                dataArray.push(formData);
+
+                $("#data_array").val(formData);
+
+                // reload table
+                loadTableArray();
+
+                // close modal
+                $('#modal-default').modal('hide');
+
+            }
+        });
+
+        // load tabel 
+        function loadTableArray() {
+
+            $('#table_array').DataTable().destroy();
+
+            var tabel = $("#table_array").DataTable({
+                layout: {
+                    topStart: {
+                        buttons: [{
+                            text: 'Add',
+                            className: 'btn-primary',
+                            action: function (e, dt, node, config) {
+                                addItem();
+                            }
+                        }, 'copy', 'excel', 'pdf']
+                    }
+                },
+                "searching": true,
+                "paging": false,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "data": dataArray,
+                "columns": [
+                    {
+                        data: 'id',
+                        className: "text-center",
+                    },
+                    {
+                        data: 'judul',
+                        className: "text-left",
+                    },
+                    {
+                        data: 'keterangan',
+                        className: "text-left",
+                    },
+                    {
+                        data: null,
+                        "render": function (data, type, row, meta) {
+                            return '<div class="btn-group">' +
+                                '<button data-id="' + row.id + '"data-judul="' + row.judul + '"data-keterangan="' + row.keterangan +
+                                '" data-toggle="tooltip" data-placement="top" title="Edit" type="button" class="btn btn-primary btn-sm edit_item"><i class="fas fa-edit"></i></button>' +
+                                '<button data-id="' + row.id +
+                                '" data-toggle="tooltip" data-placement="top" title="Hapus" type="button" class="btn btn-danger btn-sm hapus_item"><i class="fas fa-trash"></i></button>' +
+                                '</div>'
+                        },
+                    },
+                ]
+            }).buttons().container().appendTo('#table_array_wrapper .col-md-6:eq(0)');
+
+            tabel.on('order.dt search.dt', function () {
+                tabel.column(0, {
+                    search: 'applied',
+                    order: 'applied'
+                }).nodes().each(function (cell, i) {
+                    cell.innerHTML = i + 1;
+                });
+            });
+        }
+
+        // hapus item
+        $(document).on("click", ".hapus_item", function (e) {
+            var id = $(this).data('id');
+
+             swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                buttons: {
+                    cancel: {
+                        visible: true,
+                        text: 'No, cancel!',
+                        className: 'btn btn-danger'
+                    },
+                    confirm: {
+                        text: 'Yes, delete it!',
+                        className: 'btn btn-success'
+                    }
+                }
+            }).then((willDelete) => {
+
+                if (willDelete) {
+                    alert("hapus");
+
+                    $.each(dataArray, function (i) {
+                        if (dataArray[i].id === id) {
+                            dataArray.splice(i, 1);
+                            return false;
+                        }
+                    });
+
+                    // reload table
+                    loadTableArray();
+
+                    var input = $("#data_array").val();
+                    
+
+
+                } else {
+                    swal("Your imaginary file is safe!", {
+                        buttons: {
+                            confirm: {
+                                className: 'btn btn-success'
+                            }
+                        }
+                    });
+                }
+
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Product_List_App</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="product-app-container">
+        <div class="product-app-wrapper">
+
+            <form action="javascript:;" class="form">
+                <input type="text" name="name" id="name" placeholder="Name" aria-required="true" />
+                <input type="number" name="quantity" id="quantity" placeholder="quantity" aria-required="true" />
+                <input type="number" name="price" id="price" placeholder="price" aria-required="true" />
+                <input type="number" name="total_price" id="total_price" placeholder="total price"
+                    aria-required="true" />
+            </form>
+
+            <div class="button">
+                <button onclick="createItem()">create Item</button>
+                <button onclick="readItem()">read Item</button>
+                <button onclick="updateItem()">update Item</button>
+                <button onclick="deleteItem()">delete Item</button>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
